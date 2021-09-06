@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Models\MenuItem;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Null_;
 
 class MenuController extends BaseController
 {
@@ -95,6 +97,20 @@ class MenuController extends BaseController
      */
 
     public function getMenuItems() {
+        
+        //task 3
+        $menuItems = DB::table(`menu_items`)
+                    ->orderBy('parent_id','asc')
+                    ->get();
+
+            foreach($menuItems as $menu)
+            {
+                return $menu;         
+            }
+       
+        
+
+
         throw new \Exception('implement in coding task 3');
     }
 }
